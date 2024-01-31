@@ -5,6 +5,23 @@ const Desktop = () => {
   const [clicked, setClicked] = useState(false);
   const itemsData = ["Adventure", "Culinary", "Eco-tourism", "Family", "Sport"];
   const [items, setItems] = useState(itemsData);
+  const tileData = [
+  {
+    title: "Surfing",
+    description: "Best Hawaiian islands for surfing.",
+    imageUrl: "/image@2x.png",
+  },
+  {
+    title: "Hula",
+    description: "Try it yourself.",
+    imageUrl: "/rectangle-6@2x.png",
+  },
+  {
+    title: "Vulcanoes",
+    description: "Volcanic conditions can change at any time.",
+    imageUrl: "/rectangle-6-1@2x.png",
+  },
+];
   
 //--for sidebar--
   const handleClick = () => {
@@ -81,76 +98,31 @@ const Desktop = () => {
       <section className="main-frame">
         <b className="highlights">Highlights</b>
         <div className="top-surfing-text">
-          <div className="tile-1">
-            <img
-              className="image-icon1"
-              loading="eager"
-              alt=""
-              src="/image@2x.png"
-            />
-            <div className="text">
-              <div className="top">
-                <h3 className="surfing1">Surfing</h3>
-                <div className="best-hawaiian-islands">
-                  Best Hawaiian islands for surfing.
-                </div>
-              </div>
-              <div className="bottom">
-                <img
-                  className="bottom-child"
-                  loading="eager"
-                  alt=""
-                  src="/group-1.svg"
-                />
-              </div>
+        {tileData.map((title, index) => (
+        <div key={index} className={`tile-${index + 1}`}>
+          <img
+            className="image"
+            loading="eager"
+            alt=""
+            src={title?.imageUrl}
+          />
+          <div className="text">
+            <div className="top">
+              <h3 className="surfing1">{title?.title}</h3>
+              <div className="best-hawaiian-islands">{title?.description}</div>
+            </div>
+            <div className="bottom">
+              <img
+                className="bottom-child"
+                loading="eager"
+                alt=""
+                src="/group-1.svg"
+              />
             </div>
           </div>
-          <div className="tile-2">
-            <img
-              className="tile-2-child"
-              loading="eager"
-              alt=""
-              src="/rectangle-6@2x.png"
-            />
-            <div className="text1">
-              <div className="top1">
-                <h3 className="hula1">Hula</h3>
-                <div className="try-it-yourself">Try it yourself.</div>
-              </div>
-              <div className="bottom1">
-                <img
-                  className="bottom-item"
-                  loading="eager"
-                  alt=""
-                  src="/group-1.svg"
-                />
-              </div>
-            </div>
-          </div>
-          <div className="tile-3">
-            <img
-              className="tile-3-child"
-              loading="eager"
-              alt=""
-              src="/rectangle-6-1@2x.png"
-            />
-            <div className="text2">
-              <div className="top2">
-                <h3 className="vulcanoes">Vulcanoes</h3>
-                <div className="volcanic-conditions-can">
-                  Volcanic conditions can change at any time.
-                </div>
-              </div>
-              <div className="bottom2">
-                <img
-                  className="bottom-inner"
-                  loading="eager"
-                  alt=""
-                  src="/group-1.svg"
-                />
-              </div>
-            </div>
-          </div>
+        </div>
+      ))}
+          
         </div>
       </section>
       <section className="section-wrapper">
